@@ -1,43 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Code Generator</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
     <div class="container">
+        <h2>QR Code Generator</h2>
+
         <p>Enter your text or URL</p>
+
         <input type="text" placeholder="Text or URL" id="qrText">
 
         <div id="imgBox">
-            <img src="" id="qrImage">
+            <img src="" id="qrImage" alt="QR Code">
         </div>
 
         <button onclick="generateQR()">Generate QR Code</button>
+        <button id="downloadBtn">Download QR</button>
+
     </div>
+
     <script>
-        let imgBox = document.getElementById("imgBox");
-        let qrImage = document.getElementById("qrImage");
-        let qrText = document.getElementById("qrText");
+        const imgBox = document.getElementById("imgBox");
+        const qrImage = document.getElementById("qrImage");
+        const qrText = document.getElementById("qrText");
+        const downloadBtn = document.getElementById("downloadBtn");
 
         function generateQR() {
-            if(qrText.value.length > 0){
-                qrImage.src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + qrText.value;
-                imgBox.classList.add("show-img");
-            }else{
-                qrText.classList.add('error');
-                setTimeout(()=>{
-                    qrText.classList.remove('error');
-                },400);
-            }
-            
-        }
-        
 
+            if (qrText.value.trim() === "") {
+
+                qrText.classList.add("error");
+
+                setTimeout(() => {
+                    qrText.classList.remove("error");
+                }, 400);
+
+                return;
+            }
+
+            const qrURL =
+                "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" +
+                encodeURIComponent(qrText.value);
+
+            qrImage.onload = () => {
+                imgBox.classList.add("show-img");
+            };
+
+            qrImage.src = qrURL;
+        }
+
+        downloadBtn.addEventListener("click", async () => {
+
+            if (!qrImage.src) {
+                alert("Please generate a QR Code first!");
+                return;
+            }
+
+            try {
+
+                const response = await fetch(qrImage.src);
+
+                const blob = await response.blob();
+
+                const url = window.URL.createObjectURL(blob);
+
+                const link = document.createElement("a");
+
+                link.href = url;
+                link.download = "qr-code.png";
+
+                document.body.appendChild(link);
+
+                link.click();
+
+                document.body.removeChild(link);
+
+                window.URL.revokeObjectURL(url);
+
+            } catch (error) {
+                alert("Unable to download QR Code.");
+            }
+
+        });
 
     </script>
 
 </body>
+
 </html>
