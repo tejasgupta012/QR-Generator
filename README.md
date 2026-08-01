@@ -1,10 +1,11 @@
 # QR Generator
 
-A simple and responsive **QR Code Generator** built using **HTML, CSS, and JavaScript**. This application allows users to instantly generate QR codes for any text, URL, or other input using a clean and user-friendly interface.
+A simple and responsive **QR Code Generator** built using **HTML, CSS, and JavaScript**. This application allows users to instantly generate QR codes for any text, URL, or other input and download it using a clean and user-friendly interface.
 
 ## 🚀 Features
 
 * Generate QR codes instantly
+* Download QR in one click
 * Supports text, URLs, and other input
 * Responsive design for desktop and mobile
 * Simple and clean user interface
@@ -49,7 +50,6 @@ Refer the assets folder!!!
 
 ## 💡 Future Improvements
 
-* Download generated QR code as PNG
 * Add different QR code sizes
 * Customize QR code colors
 * Generate QR codes in bulk
