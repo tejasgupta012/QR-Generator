@@ -44,7 +44,7 @@ QR-Generator/
 3. Open `index.html` in your preferred web browser.
 
 ## 📸 Screenshot
-
+![QR Generator Screenshot](assets/Screenshot 2026-08-01 233837.png)
 
 ## 💡 Future Improvements
 
