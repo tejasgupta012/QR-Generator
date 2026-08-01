@@ -45,18 +45,7 @@ QR-Generator/
 
 ## 📸 Screenshot
 
-> Add a screenshot of your application here.
 
-Example:
-
-```
-<img width="527" height="332" alt="image" src="https://github.com/user-attachments/assets/c8c68f2a-115a-43a9-b5f8-c64fe680c0f0" />
-
-```
-```
-<img width="521" height="607" alt="image" src="https://github.com/user-attachments/assets/ecefafb7-79f8-4d53-a6f4-8b7ae9709428" />
-
-```
 ## 💡 Future Improvements
 
 * Download generated QR code as PNG
